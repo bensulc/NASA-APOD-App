@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="?android:listDivider"
+    android:dividerPadding="2.5dp"
+
+    android:padding="10dp"
+    android:showDividers="middle">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/search_view"
+                app:queryHint="A date(yyyy-mm-dd)">
+            </androidx.appcompat.widget.SearchView>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#000000"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_image_act"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/card_title_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Card Title"
+        android:textSize="26sp"
+        android:textStyle="bold"></TextView>
+        <TextView
+            android:id="@+id/card_date_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Card Type"
+            android:textSize="23sp"
+          ></TextView>
+
+        <TextView
+            android:id="@+id/card_copyright_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TCG Mid Price: $25.00"
+            android:textSize="23sp"
+        ></TextView>
+
+        <TextView
+            android:id="@+id/card_explanation_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destroy all Creatures for Example"
+            android:textSize="23sp"
+          ></TextView>
+
+
+
+</LinearLayout>
+</ScrollView>
