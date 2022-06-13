@@ -82,7 +82,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="?android:listDivider"
+        android:dividerPadding="2.5dp"
 
+        android:padding="10dp"
+        android:showDividers="middle"
         android:orientation="horizontal"
         >
 
@@ -96,7 +100,8 @@
             android:text="Next"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#000000"
-            android:textSize="23sp" />
+            android:textSize="23sp"
+            style="?android:attr/borderlessButtonStyle"/>
 
         <Button
             android:id="@+id/previous"
@@ -109,7 +114,9 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#000000"
-            android:textSize="23sp" />
+            android:textSize="23sp"
+            style="?android:attr/borderlessButtonStyle" />
+
     </LinearLayout>
 
 
