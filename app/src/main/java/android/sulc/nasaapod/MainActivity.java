@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.sulc.nasaapod.api.retrofit;
 import android.sulc.nasaapod.models.APODModel;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,27 +39,49 @@ public class MainActivity extends AppCompatActivity {
     private TextView mDateView;
     private TextView mDescView ;
     private ImageView mImageView;
+    private ScrollView mScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         mSearchView = findViewById(R.id.search_view);
-        mTextView = (TextView) findViewById(R.id.card_title_act);
-        mCopyrightView = (TextView) findViewById(R.id.card_copyright_act);
-        mDateView = (TextView) findViewById(R.id.card_date_act);
-        mDescView = (TextView) findViewById(R.id.card_explanation_act);
-        mImageView = (ImageView) findViewById(R.id.card_image_act);
+        mTextView = findViewById(R.id.card_title_act);
+        mCopyrightView = findViewById(R.id.card_copyright_act);
+        mDateView = findViewById(R.id.card_date_act);
+        mDescView = findViewById(R.id.card_explanation_act);
+        mImageView = findViewById(R.id.card_image_act);
+        mScrollView = findViewById(R.id.scroll);
+        initButtons();
         initSearchView();
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         getQuery(currentDate);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar));
 
 
 
     }
 
+    private void initButtons() {
+        Button next = findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                String query = LocalDate.parse(mDateView.getText().toString(), DateTimeFormatter.ofPattern("uuuu-MM-dd")).plusDays(1).toString();
+                getQuery(query);
+            }
+        });
 
+        Button previous = findViewById(R.id.previous);
+        previous.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                String query = LocalDate.parse(mDateView.getText().toString(), DateTimeFormatter.ofPattern("uuuu-MM-dd")).plusDays(-1).toString();
+                getQuery(query);
+            }
+        });
+
+    }
     private void initSearchView() {
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -101,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     catch(NullPointerException e) {
                         Toast.makeText(getApplicationContext(), "Please enter a valid date (yyyy-mm-dd)", Toast.LENGTH_LONG).show();
                     }
+                    mScrollView.scrollTo(0,0);
 
 
 
